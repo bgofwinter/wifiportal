@@ -1,0 +1,14 @@
+This version of wifidog use lighttpd as fake AuthServer, use IOS/Andorid App release station communicate with wifidog.
+So the auth master directory for lighttpd use.
+
+1. the Lighttpd confiure follow options:
+	$SERVER["socket"] == ":2080" {                                       
+		 server.document-root = "/auth/"                                     
+		  server.index-file.names = ( "index.html" )                          
+	}
+
+2. The IOS/Android App send http request for wifidog release station:
+	http://192.168.1.1:2060/portal/auth?token=87654321
+
+3. The AP app send follow http request for wifidog release station with unassociate this AP. 
+	http://192.168.1.1:2060/portal/auth?token=12345678&mac=00:0c:29:30:80:15
